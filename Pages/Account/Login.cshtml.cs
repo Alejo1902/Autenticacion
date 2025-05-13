@@ -9,5 +9,17 @@ namespace Autenticacion.Pages.Account
     {
         [BindProperty]
         public User User { get; set; }
+        public void OnGet()
+        {
+        }
+        public async Task<IActionResult> OnpostAsync()
+        {
+            if (!ModelState.IsValid) return Page();
+            if(User.Email== "Correo@gmail.com" && User.Password == "12345")
+            {
+                return RedirectToPage("/Index");
+            }
+            return Page();
+        }
     }
 }
